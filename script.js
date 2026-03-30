@@ -44,7 +44,7 @@ const teamsMENA = [
    ESTADO
 ========================= */
 
-let currentTeams = [...teamsNA]; // NA por defecto
+let currentTeams = [...teamsNA]; // default NA
 let currentTournament = "NA OPEN 5";
 
 /* =========================
@@ -118,8 +118,8 @@ function switchRegion(region){
   generateImage();
 }
 
-naBtn.onclick = () => switchRegion("NA");
-menaBtn.onclick = () => switchRegion("MENA");
+naBtn.addEventListener("click", () => switchRegion("NA"));
+menaBtn.addEventListener("click", () => switchRegion("MENA"));
 
 /* =========================
    CANVAS
@@ -165,7 +165,21 @@ async function generateImage() {
 
     const logo = await loadImage(logoSrc);
 
-    ctx.drawImage(logo,210,startY-35,45,45);
+    const size = 45;
+
+    /* fondo del logo */
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
+    ctx.fillRect(210, startY - 35, size, size);
+
+    /* mantener ratio */
+    const ratio = Math.min(size / logo.width, size / logo.height);
+    const newWidth = logo.width * ratio;
+    const newHeight = logo.height * ratio;
+
+    const offsetX = 210 + (size - newWidth) / 2;
+    const offsetY = (startY - 35) + (size - newHeight) / 2;
+
+    ctx.drawImage(logo, offsetX, offsetY, newWidth, newHeight);
 
     ctx.fillStyle="white";
     ctx.textAlign="left";
@@ -179,7 +193,7 @@ async function generateImage() {
 }
 
 /* =========================
-   INPUT
+   INPUT + CONTADOR
 ========================= */
 
 document.getElementById("personName").addEventListener("input", function(){
@@ -202,28 +216,32 @@ document.getElementById("personName").addEventListener("input", function(){
    DOWNLOAD
 ========================= */
 
-document.getElementById("downloadBtn").onclick = ()=>{
+document.getElementById("downloadBtn").addEventListener("click", ()=>{
+  const imageData = canvas.toDataURL("image/png");
+
   const link = document.createElement("a");
   link.download = "rocket-street-power-ranking.png";
-  link.href = canvas.toDataURL("image/png");
+  link.href = imageData;
   link.click();
-};
+});
 
 /* =========================
-   SHARE (DINÁMICO)
+   SHARE
 ========================= */
 
-document.getElementById("shareBtn").onclick = ()=>{
+document.getElementById("shareBtn").addEventListener("click", ()=>{
+  const imageData = canvas.toDataURL("image/png");
+
   const link = document.createElement("a");
   link.download = "rocket-street-power-ranking.png";
-  link.href = canvas.toDataURL("image/png");
+  link.href = imageData;
   link.click();
 
   const tweetText = `Mis Power Rankings del ${currentTournament} 🚀 @RocketStreet`;
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
   window.open(twitterUrl, "_blank");
-};
+});
 
 /* =========================
    INIT
