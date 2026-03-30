@@ -1,4 +1,7 @@
-/* DATA */
+/* =========================
+   DATA
+========================= */
+
 const teamsNA = [
   { name:"FURIA", logo:"logos/furia.png" },
   { name:"NRG", logo:"logos/rocket.png" },
@@ -37,28 +40,47 @@ const teamsMENA = [
   { name:"ASCENT", logo:"logos/rocket.png" }
 ];
 
-/* DEFAULT = NA */
-let currentTeams = [...teamsNA];
+/* =========================
+   ESTADO
+========================= */
+
+let currentTeams = [...teamsNA]; // NA por defecto
+let currentTournament = "NA OPEN 5";
+
+/* =========================
+   DOM
+========================= */
 
 const teamsUl = document.getElementById("teams");
+const naBtn = document.getElementById("naBtn");
+const menaBtn = document.getElementById("menaBtn");
 
-/* RENDER */
+/* =========================
+   RENDER
+========================= */
+
 function renderTeams() {
   teamsUl.innerHTML = "";
+
   currentTeams.forEach((team, index) => {
     const li = document.createElement("li");
+
     li.innerHTML = `
       <span class="position">#${index+1}</span>
       <div class="logo-box"><img src="${team.logo}"></div>
       <span class="team-name">${team.name}</span>
     `;
+
     teamsUl.appendChild(li);
   });
 }
 
 renderTeams();
 
-/* SORTABLE */
+/* =========================
+   SORTABLE
+========================= */
+
 new Sortable(teamsUl, {
   animation: 150,
   onEnd: () => {
@@ -73,27 +95,39 @@ function updatePositions(){
   });
 }
 
-/* SWITCH REGION */
+/* =========================
+   SWITCH REGION
+========================= */
+
 function switchRegion(region){
   if(region === "NA"){
     currentTeams = [...teamsNA];
+    currentTournament = "NA OPEN 5";
+
     naBtn.classList.add("active");
     menaBtn.classList.remove("active");
   } else {
     currentTeams = [...teamsMENA];
+    currentTournament = "MENA OPEN 5";
+
     menaBtn.classList.add("active");
     naBtn.classList.remove("active");
   }
+
   renderTeams();
   generateImage();
 }
 
-document.getElementById("naBtn").onclick = () => switchRegion("NA");
-document.getElementById("menaBtn").onclick = () => switchRegion("MENA");
+naBtn.onclick = () => switchRegion("NA");
+menaBtn.onclick = () => switchRegion("MENA");
 
-/* CANVAS */
+/* =========================
+   CANVAS
+========================= */
+
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
+
 canvas.width = 1080;
 canvas.height = 1350;
 
@@ -111,7 +145,7 @@ async function generateImage() {
   const bg = await loadImage("background.png");
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
 
-  let name = document.getElementById("personName").value;
+  let name = document.getElementById("personName").value.slice(0,25);
 
   if(name){
     ctx.fillStyle="#ff5419";
@@ -144,9 +178,13 @@ async function generateImage() {
   document.getElementById("previewImage").src = canvas.toDataURL("image/png");
 }
 
-/* INPUT */
+/* =========================
+   INPUT
+========================= */
+
 document.getElementById("personName").addEventListener("input", function(){
   const counter = document.getElementById("charCounter");
+
   counter.textContent = `${this.value.length} / 25`;
 
   if(this.value.length >= 25){
@@ -160,22 +198,35 @@ document.getElementById("personName").addEventListener("input", function(){
   generateImage();
 });
 
-/* DOWNLOAD */
+/* =========================
+   DOWNLOAD
+========================= */
+
 document.getElementById("downloadBtn").onclick = ()=>{
-  const link=document.createElement("a");
-  link.download="ranking.png";
-  link.href=canvas.toDataURL();
+  const link = document.createElement("a");
+  link.download = "rocket-street-power-ranking.png";
+  link.href = canvas.toDataURL("image/png");
   link.click();
 };
 
-/* SHARE */
+/* =========================
+   SHARE (DINÁMICO)
+========================= */
+
 document.getElementById("shareBtn").onclick = ()=>{
-  const link=document.createElement("a");
-  link.download="ranking.png";
-  link.href=canvas.toDataURL();
+  const link = document.createElement("a");
+  link.download = "rocket-street-power-ranking.png";
+  link.href = canvas.toDataURL("image/png");
   link.click();
 
-  window.open("https://twitter.com/intent/tweet?text=Mis Power Rankings 🚀","_blank");
+  const tweetText = `Mis Power Rankings del ${currentTournament} 🚀 @RocketStreet`;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+
+  window.open(twitterUrl, "_blank");
 };
+
+/* =========================
+   INIT
+========================= */
 
 generateImage();
