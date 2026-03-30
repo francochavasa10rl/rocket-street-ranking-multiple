@@ -14,7 +14,7 @@
     --font-main: 'BourgeoisBold', sans-serif;
 }
 
-/* 2. RESET Y BASE */
+/* 2. RESET Y ESTRUCTURA BASE */
 * {
     box-sizing: border-box;
 }
@@ -27,9 +27,41 @@ body {
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
+    background-attachment: fixed;
 }
 
-/* 3. LAYOUT */
+/* 3. HEADER */
+.site-header {
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rs-border);
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-logo {
+    height: 35px;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+/* 4. LAYOUT PRINCIPAL */
 .main-layout {
     display: flex;
     max-width: 1400px;
@@ -39,7 +71,7 @@ body {
     min-height: calc(100vh - 70px);
 }
 
-/* 4. PANEL IZQUIERDO */
+/* 5. PANEL IZQUIERDO */
 .left-panel {
     flex: 1.2;
     display: flex;
@@ -54,7 +86,6 @@ body {
     text-shadow: 0 0 15px rgba(187, 255, 0, 0.2);
 }
 
-/* INPUT */
 #personName {
     width: 300px;
     padding: 12px;
@@ -90,7 +121,7 @@ body {
     color: #f85149;
 }
 
-/* TOGGLE */
+/* 6. TOGGLE */
 .region-toggle {
     display: flex;
     gap: 10px;
@@ -122,7 +153,7 @@ body {
     box-shadow: 0 0 10px rgba(187,255,0,0.2);
 }
 
-/* 5. TEAMS */
+/* 7. LISTA DE EQUIPOS */
 #teams {
     width: 100%;
     max-width: 550px;
@@ -165,22 +196,19 @@ body {
     font-weight: bold;
 }
 
-/* 🔥 LOGOS 1:1 */
+/* 🔥 LOGOS 1:1 (INVISIBLE) */
 .logo-box {
     width: 40px;
     aspect-ratio: 1 / 1;
-    background: rgba(0,0,0,0.4);
-    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 20px;
-    overflow: hidden;
 }
 
 .logo-box img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -189,7 +217,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* 6. PANEL DERECHO */
+/* 8. PANEL DERECHO */
 .right-panel {
     flex: 1;
     display: flex;
@@ -215,7 +243,6 @@ body {
     color: #6e7681;
 }
 
-/* 🔥 FIX PREVIEW */
 .preview-box img {
     width: 100%;
     height: auto;
@@ -224,7 +251,7 @@ body {
     border-radius: 6px;
 }
 
-/* 7. BOTONES */
+/* 9. BOTONES */
 .share-buttons {
     display: flex;
     flex-direction: column;
@@ -268,7 +295,7 @@ body {
     transform: scale(1.02);
 }
 
-/* 8. RESPONSIVE */
+/* 10. RESPONSIVE */
 @media (max-width: 1100px) {
     .main-layout {
         flex-direction: column;
