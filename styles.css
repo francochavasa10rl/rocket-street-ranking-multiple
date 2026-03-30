@@ -312,3 +312,69 @@ body {
         max-width: 100%;
     }
 }
+
+/* =========================
+   🌍 LANGUAGE TOGGLE
+========================= */
+
+.language-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: #0d1117;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--rs-border);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* BOTONES */
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    font-family: var(--font-main);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #c9d1d9;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+/* BANDERAS */
+.lang-btn img {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.6);
+}
+
+/* HOVER */
+.lang-btn:hover {
+    background: #161b22;
+    border-color: #30363d;
+    transform: translateY(-1px);
+}
+
+/* ACTIVO (🔥 estilo neón) */
+.lang-btn.active {
+    background: #161b22;
+    border-color: var(--rs-neon);
+    color: var(--rs-neon);
+    box-shadow: 0 0 10px rgba(187,255,0,0.25);
+}
+
+/* CLICK */
+.lang-btn:active {
+    transform: scale(0.95);
+}
