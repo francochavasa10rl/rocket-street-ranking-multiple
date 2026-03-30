@@ -22,22 +22,22 @@ const teamsNA = [
 ];
 
 const teamsMENA = [
-  { name:"FALCONS", logo:"logos/rocket.png" },
-  { name:"TWISTED MINDS", logo:"logos/rocket.png" },
-  { name:"RULE ONE", logo:"logos/rocket.png" },
-  { name:"VISION", logo:"logos/rocket.png" },
-  { name:"ANKAA", logo:"logos/rocket.png" },
-  { name:"SCYTES", logo:"logos/rocket.png" },
-  { name:"DARKSIDE", logo:"logos/rocket.png" },
-  { name:"BRAVADO", logo:"logos/rocket.png" },
-  { name:"EXILE", logo:"logos/rocket.png" },
-  { name:"VENOM", logo:"logos/rocket.png" },
-  { name:"UNITY", logo:"logos/rocket.png" },
-  { name:"LEGION", logo:"logos/rocket.png" },
-  { name:"PHOENIX", logo:"logos/rocket.png" },
-  { name:"NEXUS", logo:"logos/rocket.png" },
-  { name:"VOID", logo:"logos/rocket.png" },
-  { name:"ASCENT", logo:"logos/rocket.png" }
+  { name:"R8 ESPORTS", logo:"logos/r8.png" },
+  { name:"STALLIONS", logo:"logos/stallions.png" },
+  { name:"TEAM FALCONS", logo:"logos/falcons.png" },
+  { name:"TWISTED MINDS", logo:"logos/twisted.png" },
+  { name:"RAFHA ESPORTS", logo:"logos/rafha.png" },
+  { name:"ALYOM W ANA B ALSH8L", logo:"logos/rocket.png" },
+  { name:"DOS", logo:"logos/rocket.png" },
+  { name:"EVERYTHING", logo:"logos/rocket.png" },
+  { name:"DFT", logo:"logos/rocket.png" },
+  { name:"SLEEPING", logo:"logos/sleeping.png" },
+  { name:"NOTHING", logo:"logos/rocket.png" },
+  { name:"WE DON'T KNOW", logo:"logos/rocket.png" },
+  { name:"AFK", logo:"logos/afk.png" },
+  { name:"THEFIRST", logo:"logos/rocket.png" },
+  { name:"RURAL", logo:"logos/rocket.png" },
+  { name:"EXCITING1", logo:"logos/rocket.png" }
 ];
 
 /* =========================
