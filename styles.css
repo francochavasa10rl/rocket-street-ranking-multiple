@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'BourgeoisBold';
+    src: url('fonts/Bourgeois-Bold.ttf') format('truetype');
+}
+
+:root {
+    --rs-black: #000000;
+    --rs-dark-grey: #0d1117;
+    --rs-panel: #161b22;
+    --rs-neon: #bbff00;
+    --rs-border: #30363d;
+    --rs-blue: #2d8cff;
+    --font-main: 'BourgeoisBold', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: #000;
+    color: white;
+}
+
+/* LAYOUT */
+.main-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 50px;
+    gap: 40px;
+}
+
+.left-panel {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+#personName {
+    width: 300px;
+    padding: 12px;
+    background: #000;
+    border: 1px solid var(--rs-border);
+    color: var(--rs-neon);
+    text-align: center;
+}
+
+#charCounter {
+    font-size: 14px;
+    color: #6e7681;
+    margin: 8px 0 20px 0;
+}
+
+#charCounter.limit { color: #f85149; }
+#personName.limit { border-color: #a52019; }
+
+/* TOGGLE */
+.region-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toggle {
+    padding: 10px 15px;
+    background: #161b22;
+    border: 1px solid var(--rs-border);
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.toggle.active {
+    border-color: var(--rs-neon);
+    color: var(--rs-neon);
+}
+
+/* TEAMS */
+#teams {
+    width: 100%;
+    max-width: 550px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#teams li {
+    background: var(--rs-panel);
+    border: 1px solid var(--rs-border);
+    border-left: 5px solid var(--rs-neon);
+    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 0 6px 6px 0;
+    cursor: grab;
+}
+
+.position {
+    width: 50px;
+    color: var(--rs-neon);
+}
+
+.logo-box {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+}
+
+.logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.right-panel {
+    flex: 1;
+    margin-top: 100px;
+}
+
+.preview-box img {
+    width: 100%;
+    max-height: 500px;
+}
+
+.btn {
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
