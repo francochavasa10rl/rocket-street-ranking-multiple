@@ -1,5 +1,5 @@
 /* =========================
-   DATA
+   DATA ORIGINAL + REGIONES
 ========================= */
 
 const teamsNA = [
@@ -8,10 +8,10 @@ const teamsNA = [
   { name:"GEN.G", logo:"logos/rocket.png" },
   { name:"G2", logo:"logos/rocket.png" },
   { name:"SSG", logo:"logos/rocket.png" },
-  { name:"SHOPIFY", logo:"logos/rocket.png" },
+  { name:"SHOPIFY REBELLION", logo:"logos/rocket.png" },
   { name:"COMPLEXITY", logo:"logos/rocket.png" },
   { name:"M80", logo:"logos/rocket.png" },
-  { name:"DIG", logo:"logos/rocket.png" },
+  { name:"DIGNITAS", logo:"logos/rocket.png" },
   { name:"OPTIC", logo:"logos/rocket.png" },
   { name:"TSM", logo:"logos/rocket.png" },
   { name:"VERSION1", logo:"logos/rocket.png" },
@@ -44,7 +44,7 @@ const teamsMENA = [
    ESTADO
 ========================= */
 
-let currentTeams = [...teamsNA]; // default NA
+let currentTeams = [...teamsNA];
 let currentTournament = "NA OPEN 5";
 
 /* =========================
@@ -78,7 +78,7 @@ function renderTeams() {
 renderTeams();
 
 /* =========================
-   SORTABLE
+   SORTABLE (ORIGINAL)
 ========================= */
 
 new Sortable(teamsUl, {
@@ -96,7 +96,7 @@ function updatePositions(){
 }
 
 /* =========================
-   SWITCH REGION
+   SWITCH REGION (NUEVO)
 ========================= */
 
 function switchRegion(region){
@@ -118,11 +118,13 @@ function switchRegion(region){
   generateImage();
 }
 
-naBtn.addEventListener("click", () => switchRegion("NA"));
-menaBtn.addEventListener("click", () => switchRegion("MENA"));
+if(naBtn && menaBtn){
+  naBtn.addEventListener("click", () => switchRegion("NA"));
+  menaBtn.addEventListener("click", () => switchRegion("MENA"));
+}
 
 /* =========================
-   CANVAS
+   CANVAS (ORIGINAL + FIX LOGOS)
 ========================= */
 
 const canvas = document.createElement("canvas");
@@ -145,6 +147,7 @@ async function generateImage() {
   const bg = await loadImage("background.png");
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
 
+  /* NOMBRE */
   let name = document.getElementById("personName").value.slice(0,25);
 
   if(name){
@@ -154,6 +157,7 @@ async function generateImage() {
     ctx.fillText(name.toUpperCase(),538,255);
   }
 
+  /* TEAMS */
   const teams = document.querySelectorAll("#teams li");
 
   let startY = 335;
@@ -167,11 +171,7 @@ async function generateImage() {
 
     const size = 45;
 
-    /* fondo del logo */
-    ctx.fillStyle = "rgba(0,0,0,0.4)";
-    ctx.fillRect(210, startY - 35, size, size);
-
-    /* mantener ratio */
+    /* 🔥 AJUSTE 1:1 SIN FONDO */
     const ratio = Math.min(size / logo.width, size / logo.height);
     const newWidth = logo.width * ratio;
     const newHeight = logo.height * ratio;
@@ -193,7 +193,7 @@ async function generateImage() {
 }
 
 /* =========================
-   INPUT + CONTADOR
+   INPUT + CONTADOR (ORIGINAL)
 ========================= */
 
 document.getElementById("personName").addEventListener("input", function(){
@@ -213,10 +213,10 @@ document.getElementById("personName").addEventListener("input", function(){
 });
 
 /* =========================
-   DOWNLOAD
+   DOWNLOAD (ORIGINAL)
 ========================= */
 
-document.getElementById("downloadBtn").addEventListener("click", ()=>{
+document.getElementById("downloadBtn").addEventListener("click",()=>{
   const imageData = canvas.toDataURL("image/png");
 
   const link = document.createElement("a");
@@ -226,10 +226,10 @@ document.getElementById("downloadBtn").addEventListener("click", ()=>{
 });
 
 /* =========================
-   SHARE
+   SHARE (MODIFICADO DINÁMICO)
 ========================= */
 
-document.getElementById("shareBtn").addEventListener("click", ()=>{
+document.getElementById("shareBtn").addEventListener("click",()=>{
   const imageData = canvas.toDataURL("image/png");
 
   const link = document.createElement("a");
