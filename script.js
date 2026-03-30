@@ -3,22 +3,22 @@
 ========================= */
 
 const teamsNA = [
-  { name:"FURIA", logo:"logos/furia.png" },
-  { name:"NRG", logo:"logos/rocket.png" },
-  { name:"GEN.G", logo:"logos/rocket.png" },
-  { name:"G2", logo:"logos/rocket.png" },
-  { name:"SSG", logo:"logos/rocket.png" },
-  { name:"SHOPIFY REBELLION", logo:"logos/rocket.png" },
-  { name:"COMPLEXITY", logo:"logos/rocket.png" },
-  { name:"M80", logo:"logos/rocket.png" },
-  { name:"DIGNITAS", logo:"logos/rocket.png" },
-  { name:"OPTIC", logo:"logos/rocket.png" },
-  { name:"TSM", logo:"logos/rocket.png" },
-  { name:"VERSION1", logo:"logos/rocket.png" },
-  { name:"KOI", logo:"logos/rocket.png" },
-  { name:"LUMINOSITY", logo:"logos/rocket.png" },
-  { name:"PIRATES", logo:"logos/rocket.png" },
-  { name:"AKREW", logo:"logos/rocket.png" }
+  { name:"SPACESTATION GAMING", logo:"logos/ssg.png" },
+  { name:"NRG", logo:"logos/nrg.png" },
+  { name:"SHOPIFY REBELLION", logo:"logos/shopify.png" },
+  { name:"FUT ESPORTS", logo:"logos/fut.png" },
+  { name:"STRICTLY BUSINESS", logo:"logos/rocket.png" },
+  { name:"NEXT2NU ESPORTS", logo:"logos/n2n.png" },
+  { name:"1", logo:"logos/rocket.png" },
+  { name:"GEN.G MOBIL1 RACING", logo:"logos/geng.png" },
+  { name:"FELLAS", logo:"logos/fellas.png" },
+  { name:"LOB", logo:"logos/rocket.png" },
+  { name:"THE IMMIGRANTS", logo:"logos/rocket.png" },
+  { name:"NODOPE", logo:"logos/rocket.png" },
+  { name:"DIGNITAS", logo:"logos/dignitas.png" },
+  { name:"VIRTUS.PRO", logo:"logos/vp.png" },
+  { name:"SOUTHAMPTON ACADEMY", logo:"logos/rocket.png" },
+  { name:"KRAKENSEAS", logo:"logos/kraken.png" }
 ];
 
 const teamsMENA = [
