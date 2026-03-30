@@ -1,4 +1,37 @@
 /* =========================
+   🌍 TRADUCCIONES
+========================= */
+
+const translations = {
+  es: {
+    title: "ARMA TU POWER RANKING",
+    placeholder: "TU NOMBRE",
+    preview: "PREVIEW",
+    download: "Descargar imagen",
+    share: "Descargar y Compartir en X",
+    discord: "Unirse al Discord",
+    tweet: (t) => `Mis Power Rankings del ${t} 🚀 @RocketStreet`
+  },
+  en: {
+    title: "BUILD YOUR POWER RANKING",
+    placeholder: "YOUR NAME",
+    preview: "PREVIEW",
+    download: "Download image",
+    share: "Download & Share on X",
+    discord: "Join Discord",
+    tweet: (t) => `My Power Rankings for ${t} 🚀 @RocketStreet`
+  }
+};
+
+/* =========================
+   🌐 IDIOMA (AUTO + GUARDADO)
+========================= */
+
+const savedLang = localStorage.getItem("lang");
+const browserLang = navigator.language.toLowerCase();
+let lang = savedLang || (browserLang.startsWith("es") ? "es" : "en");
+
+/* =========================
    DATA ORIGINAL + REGIONES
 ========================= */
 
@@ -55,8 +88,42 @@ const teamsUl = document.getElementById("teams");
 const naBtn = document.getElementById("naBtn");
 const menaBtn = document.getElementById("menaBtn");
 
+const langEsBtn = document.getElementById("langEs");
+const langEnBtn = document.getElementById("langEn");
+
 /* =========================
-   RENDER
+   🌍 APLICAR IDIOMA
+========================= */
+
+function applyTranslations(){
+  const t = translations[lang];
+
+  document.querySelector(".section-title").textContent = t.title;
+  document.getElementById("personName").placeholder = t.placeholder;
+  document.querySelector(".preview-box h3").textContent = t.preview;
+  document.getElementById("downloadBtn").textContent = t.download;
+  document.getElementById("shareBtn").textContent = t.share;
+  document.querySelector(".discord").textContent = t.discord;
+
+  langEsBtn.classList.toggle("active", lang === "es");
+  langEnBtn.classList.toggle("active", lang === "en");
+}
+
+/* =========================
+   CAMBIAR IDIOMA
+========================= */
+
+function setLanguage(newLang){
+  lang = newLang;
+  localStorage.setItem("lang", newLang);
+  applyTranslations();
+}
+
+langEsBtn.addEventListener("click", ()=> setLanguage("es"));
+langEnBtn.addEventListener("click", ()=> setLanguage("en"));
+
+/* =========================
+   RENDER ORIGINAL
 ========================= */
 
 function renderTeams() {
@@ -78,7 +145,7 @@ function renderTeams() {
 renderTeams();
 
 /* =========================
-   SORTABLE (ORIGINAL)
+   SORTABLE ORIGINAL
 ========================= */
 
 new Sortable(teamsUl, {
@@ -96,7 +163,7 @@ function updatePositions(){
 }
 
 /* =========================
-   SWITCH REGION (NUEVO)
+   SWITCH REGION
 ========================= */
 
 function switchRegion(region){
@@ -118,13 +185,11 @@ function switchRegion(region){
   generateImage();
 }
 
-if(naBtn && menaBtn){
-  naBtn.addEventListener("click", () => switchRegion("NA"));
-  menaBtn.addEventListener("click", () => switchRegion("MENA"));
-}
+naBtn.addEventListener("click", () => switchRegion("NA"));
+menaBtn.addEventListener("click", () => switchRegion("MENA"));
 
 /* =========================
-   CANVAS (ORIGINAL + FIX LOGOS)
+   CANVAS ORIGINAL
 ========================= */
 
 const canvas = document.createElement("canvas");
@@ -147,7 +212,6 @@ async function generateImage() {
   const bg = await loadImage("background.png");
   ctx.drawImage(bg,0,0,canvas.width,canvas.height);
 
-  /* NOMBRE */
   let name = document.getElementById("personName").value.slice(0,25);
 
   if(name){
@@ -157,7 +221,6 @@ async function generateImage() {
     ctx.fillText(name.toUpperCase(),538,255);
   }
 
-  /* TEAMS */
   const teams = document.querySelectorAll("#teams li");
 
   let startY = 335;
@@ -171,7 +234,6 @@ async function generateImage() {
 
     const size = 45;
 
-    /* 🔥 AJUSTE 1:1 SIN FONDO */
     const ratio = Math.min(size / logo.width, size / logo.height);
     const newWidth = logo.width * ratio;
     const newHeight = logo.height * ratio;
@@ -193,7 +255,7 @@ async function generateImage() {
 }
 
 /* =========================
-   INPUT + CONTADOR (ORIGINAL)
+   INPUT ORIGINAL
 ========================= */
 
 document.getElementById("personName").addEventListener("input", function(){
@@ -213,7 +275,7 @@ document.getElementById("personName").addEventListener("input", function(){
 });
 
 /* =========================
-   DOWNLOAD (ORIGINAL)
+   DOWNLOAD ORIGINAL
 ========================= */
 
 document.getElementById("downloadBtn").addEventListener("click",()=>{
@@ -226,7 +288,7 @@ document.getElementById("downloadBtn").addEventListener("click",()=>{
 });
 
 /* =========================
-   SHARE (MODIFICADO DINÁMICO)
+   SHARE DINÁMICO
 ========================= */
 
 document.getElementById("shareBtn").addEventListener("click",()=>{
@@ -237,7 +299,7 @@ document.getElementById("shareBtn").addEventListener("click",()=>{
   link.href = imageData;
   link.click();
 
-  const tweetText = `Mis Power Rankings del ${currentTournament} 🚀 @RocketStreet`;
+  const tweetText = translations[lang].tweet(currentTournament);
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
   window.open(twitterUrl, "_blank");
@@ -247,4 +309,5 @@ document.getElementById("shareBtn").addEventListener("click",()=>{
    INIT
 ========================= */
 
+applyTranslations();
 generateImage();
