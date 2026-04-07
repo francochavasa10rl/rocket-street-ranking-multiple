@@ -86,7 +86,7 @@ let currentTournament = "SAM OPEN 5";
 
 const teamsUl = document.getElementById("teams");
 const samBtn = document.getElementById("samBtn");
-const meuBtn = document.getElementById("euBtn");
+const euBtn = document.getElementById("euBtn");
 
 const langEsBtn = document.getElementById("langEs");
 const langEnBtn = document.getElementById("langEn");
