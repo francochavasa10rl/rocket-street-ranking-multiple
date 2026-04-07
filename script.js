@@ -35,58 +35,58 @@ let lang = savedLang || (browserLang.startsWith("es") ? "es" : "en");
    DATA ORIGINAL + REGIONES
 ========================= */
 
-const teamsNA = [
-  { name:"SPACESTATION GAMING", logo:"logos/ssg.png" },
-  { name:"NRG", logo:"logos/nrg.png" },
-  { name:"SHOPIFY REBELLION", logo:"logos/shopify.png" },
-  { name:"FUT ESPORTS", logo:"logos/fut.png" },
-  { name:"STRICTLY BUSINESS", logo:"logos/rocket.png" },
-  { name:"NEXT2NU ESPORTS", logo:"logos/n2n.png" },
-  { name:"1", logo:"logos/rocket.png" },
-  { name:"GEN.G MOBIL1 RACING", logo:"logos/geng.png" },
-  { name:"FELLAS", logo:"logos/fellas.png" },
-  { name:"LOB", logo:"logos/rocket.png" },
-  { name:"THE IMMIGRANTS", logo:"logos/rocket.png" },
-  { name:"NODOPE", logo:"logos/rocket.png" },
-  { name:"DIGNITAS", logo:"logos/dignitas.png" },
-  { name:"VIRTUS.PRO", logo:"logos/vp.png" },
-  { name:"SOUTHAMPTON ACADEMY", logo:"logos/rocket.png" },
-  { name:"KRAKENSEAS", logo:"logos/kraken.png" }
+const teamsSAM = [
+  { name:"FURIA", logo:"logos/furia.png" },
+  { name:"MIBR", logo:"logos/mibr.png" },
+  { name:"TEAM SECRET", logo:"logos/secret.png" },
+  { name:"BS+COMPETITION", logo:"logos/bs.png" },
+  { name:"NUTORIOUS", logo:"logos/nutorious.png" },
+  { name:"NOVADRIFT", logo:"logos/rocket.png" },
+  { name:"DREAM ESPORTS", logo:"logos/dream.png" },
+  { name:"BIGODES", logo:"logos/rocket.png" },
+  { name:"NOVA LEGION", logo:"logos/rocket.png" },
+  { name:"SANGRES", logo:"logos/rocket.png" },
+  { name:"NO FEAR", logo:"logos/nofear.png" },
+  { name:"MOCKIT APES", logo:"logos/rocket.png" },
+  { name:"25 SHOT CLUB", logo:"logos/25shot.png" },
+  { name:"ENOSIS ESPORTS", logo:"logos/enosis.png" },
+  { name:"O ESFORÇO FC 2", logo:"logos/rocket.png" },
+  { name:"21909120", logo:"logos/rocket.png" }
 ];
 
-const teamsMENA = [
-  { name:"R8 ESPORTS", logo:"logos/r8.png" },
-  { name:"STALLIONS", logo:"logos/stallions.png" },
-  { name:"TEAM FALCONS", logo:"logos/falcons.png" },
-  { name:"TWISTED MINDS", logo:"logos/twisted.png" },
-  { name:"RAFHA ESPORTS", logo:"logos/rafha.png" },
-  { name:"ALYOM W ANA B ALSH8L", logo:"logos/rocket.png" },
-  { name:"DOS", logo:"logos/rocket.png" },
-  { name:"EVERYTHING", logo:"logos/rocket.png" },
-  { name:"DFT", logo:"logos/rocket.png" },
-  { name:"SLEEPING", logo:"logos/sleeping.png" },
-  { name:"NOTHING", logo:"logos/rocket.png" },
-  { name:"WE DON'T KNOW", logo:"logos/rocket.png" },
-  { name:"AFK", logo:"logos/afk.png" },
-  { name:"THEFIRST", logo:"logos/rocket.png" },
-  { name:"RURAL", logo:"logos/rocket.png" },
-  { name:"EXCITING1", logo:"logos/rocket.png" }
+const teamsEU = [
+  { name:"TEAM VITALITY", logo:"logos/vitality.png" },
+  { name:"NINJAS IN PYJAMAS", logo:"logos/nip.png" },
+  { name:"MANCHESTER CITY ESPORTS", logo:"logos/city.png" },
+  { name:"KARMINE CORP", logo:"logos/kc.png" },
+  { name:"TOAD IN THE HOLE", logo:"logos/rocket.png" },
+  { name:"SYNERGY", logo:"logos/synergy.png" },
+  { name:"KAYDOP CORP", logo:"logos/rocket.png" },
+  { name:"GENTLE MATES", logo:"logos/m8.png" },
+  { name:"WIP ESPORTS", logo:"logos/wip.png" },
+  { name:"GRIDDYGOOSE", logo:"logos/griddy.png" },
+  { name:"ERAH ESPORT", logo:"logos/erah.png" },
+  { name:"GEEKAY ESPORTS", logo:"logos/geekay.png" },
+  { name:"GHT", logo:"logos/rocket.png" },
+  { name:"PCS STRIDE", logo:"logos/pcs.png" },
+  { name:"KALOGERAS", logo:"logos/rocket.png" },
+  { name:"MAGNIFICO", logo:"logos/magnifico.png" }
 ];
 
 /* =========================
    ESTADO
 ========================= */
 
-let currentTeams = [...teamsNA];
-let currentTournament = "NA OPEN 5";
+let currentTeams = [...teamsSAM];
+let currentTournament = "SAM OPEN 5";
 
 /* =========================
    DOM
 ========================= */
 
 const teamsUl = document.getElementById("teams");
-const naBtn = document.getElementById("naBtn");
-const menaBtn = document.getElementById("menaBtn");
+const samBtn = document.getElementById("samBtn");
+const meuBtn = document.getElementById("euBtn");
 
 const langEsBtn = document.getElementById("langEs");
 const langEnBtn = document.getElementById("langEn");
@@ -167,15 +167,15 @@ function updatePositions(){
 ========================= */
 
 function switchRegion(region){
-  if(region === "NA"){
-    currentTeams = [...teamsNA];
-    currentTournament = "NA OPEN 5";
+  if(region === "SAM"){
+    currentTeams = [...teamsSAM];
+    currentTournament = "SAM OPEN 5";
 
-    naBtn.classList.add("active");
-    menaBtn.classList.remove("active");
+    samBtn.classList.add("active");
+    euBtn.classList.remove("active");
   } else {
-    currentTeams = [...teamsMENA];
-    currentTournament = "MENA OPEN 5";
+    currentTeams = [...teamsEU];
+    currentTournament = "EU OPEN 5";
 
     menaBtn.classList.add("active");
     naBtn.classList.remove("active");
@@ -185,8 +185,8 @@ function switchRegion(region){
   generateImage();
 }
 
-naBtn.addEventListener("click", () => switchRegion("NA"));
-menaBtn.addEventListener("click", () => switchRegion("MENA"));
+naBtn.addEventListener("click", () => switchRegion("SAM"));
+menaBtn.addEventListener("click", () => switchRegion("EU"));
 
 /* =========================
    CANVAS ORIGINAL
