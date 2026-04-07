@@ -177,16 +177,16 @@ function switchRegion(region){
     currentTeams = [...teamsEU];
     currentTournament = "EU OPEN 5";
 
-    menaBtn.classList.add("active");
-    naBtn.classList.remove("active");
+    euBtn.classList.add("active");
+    samBtn.classList.remove("active");
   }
 
   renderTeams();
   generateImage();
 }
 
-naBtn.addEventListener("click", () => switchRegion("SAM"));
-menaBtn.addEventListener("click", () => switchRegion("EU"));
+samBtn.addEventListener("click", () => switchRegion("SAM"));
+euBtn.addEventListener("click", () => switchRegion("EU"));
 
 /* =========================
    CANVAS ORIGINAL
